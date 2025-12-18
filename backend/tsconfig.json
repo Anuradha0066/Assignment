@@ -12,6 +12,9 @@
     "resolveJsonModule": true,
     "types": ["node", "express"]
   },
+  "ts-node": {
+    "transpileOnly": true
+  },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
 }

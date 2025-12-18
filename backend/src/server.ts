@@ -11,8 +11,8 @@ dotenv.config();
     await connectDB();
     const server = http.createServer(app);
     initSocket(server); // ⚡ Socket.io initialized here
-    server.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+    server.listen(PORT || 10000,'0.0.0.0',  () => {
+      console.log(`Server running on port ${PORT||10000}`);
     });
   } catch (err) {
     console.error('Failed to start server:', err);

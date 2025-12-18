@@ -39,11 +39,6 @@ npm run dev
 - Create tasks/projects
 - Real-time collaboration works across browser tabs
 
-## 🐳 Docker Setup (Theoretical)
-
-Docker Desktop currently facing engine API error on local Windows machine, but setup is production-ready:
-docker compose up --build
-
 
 - Frontend: `http://localhost:5173`
 - Backend: `http://localhost:5000`
@@ -102,10 +97,6 @@ Fields: action, userId, entityType, entityId, oldData, newData, timestamp
 - Every task/project change logged
 - Accessible via `/api/v1/audit-logs` (admin only)
 
-### 3. Docker Multi-Service Orchestration
-- FE + BE + DB in `docker-compose.yml`
-- Environment variable injection
-- Health checks and restart policies
 
 ## 🏗️ Architecture Decisions
 

@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "nodemon",
     "build": "tsc",
-    "start": "node dist/server.js",
-    "test": "jest --passWithNoTests --runInBand"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,4 @@
-MONGO_URI=mongodb://127.0.0.1:27017/backend
+MONGO_URI=mongodb+srv://anuradhaglobal123_db_user:Bhadoriya06@cluster0.brjauus.mongodb.net/
 JWT_SECRET=secret
 PORT=5000
 NODE_ENV=development

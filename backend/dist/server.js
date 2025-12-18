@@ -15,8 +15,8 @@ dotenv_1.default.config();
         await (0, db_1.default)();
         const server = http_1.default.createServer(app_1.default);
         (0, socket_1.initSocket)(server); // ⚡ Socket.io initialized here
-        server.listen(env_1.PORT, () => {
-            console.log(`Server running on port ${env_1.PORT}`);
+        server.listen(env_1.PORT || 10000, '0.0.0.0', () => {
+            console.log(`Server running on port ${env_1.PORT || 10000}`);
         });
     }
     catch (err) {

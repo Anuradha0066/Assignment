@@ -12,6 +12,13 @@ const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
+app.get('/', (_req, res) => {
+    res.json({
+        message: 'TaskFlow Backend API ✅',
+        health: 'ok',
+        endpoints: ['/api/v1/auth/register', '/api/v1/tasks']
+    });
+});
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({

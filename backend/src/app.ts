@@ -8,6 +8,16 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
+
+app.get('/', (_req, res) => {
+  res.json({ 
+    message: 'TaskFlow Backend API ✅', 
+    health: 'ok',
+    endpoints: ['/api/v1/auth/register', '/api/v1/tasks']
+  });
+});
+
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({

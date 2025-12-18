@@ -21,6 +21,10 @@ export const register = async (data: RegisterDto): Promise<{ user: User }> => {
 // ✅ FIXED LOGIN
 export const login = async (credentials: LoginDto): Promise<{ user: User; token: string }> => {
   const response = await axiosInstance.post('/auth/login', credentials);
+  if (response.data.token) {
+    localStorage.setItem('token', response.data.token);
+  }
+  
   return response.data;
 };
 

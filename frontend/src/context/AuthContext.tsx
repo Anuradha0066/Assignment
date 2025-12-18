@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface User {
-  id: string;
+  _id: string;
   email: string;
   name?: string;
 }
@@ -35,7 +35,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       // Mock user for now - REPLACE WITH REAL API
       return {
-        id: '1',
+        _id: '1',
         email: 'user@example.com',
         name: 'Test User'
       };

@@ -9,11 +9,24 @@ export function useAuth() {
   const { mutate: mutateTasks } = useTasks();
 
   const signIn = useCallback(async (email: string, password: string) => {
-    const { user } = await login({ email, password });
-    setUser(user);
-    mutateTasks(); // Refresh tasks
-    return user;
-  }, [setUser, mutateTasks]);
+  const response = await login({ email, password });
+  
+if (response.token) {
+    localStorage.setItem('token', response.token);
+  }  
+  // Backend _id ko frontend me map karo
+  const userData = {
+    _id: response.user._id,  // ← Backend field
+    email: response.user.email,
+    name: response.user.name
+  };
+  
+  setUser(userData);
+  mutateTasks();
+  return userData;
+}, [setUser, mutateTasks]);
+
+
 
   const signOut = useCallback(async () => {
     await logout();

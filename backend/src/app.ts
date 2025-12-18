@@ -21,7 +21,11 @@ app.get('/', (_req, res) => {
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin:  'http://localhost:5173',
+  origin:  [
+    'http://localhost:5173',           // Local dev
+    'https://musical-taffy-df91a6.netlify.app'  // 🔥 NETLIFY URL
+  ],
+
   credentials: true,
 }));
 app.use( apiRouter);

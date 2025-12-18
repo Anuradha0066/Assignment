@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@tanstack/react-query": "^5.90.12",
+    "axios": "^1.13.2",
+    "react-hook-form": "^7.68.0",
+    "socket.io-client": "^4.8.1",
+    "zod": "^4.1.13"
+  }
+}

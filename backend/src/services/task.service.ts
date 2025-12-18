@@ -25,7 +25,7 @@ export async function createTask(
       ? new Types.ObjectId(data.assignedToId)
       : undefined,
     status: 'To Do'
-  });
+  }as any);
 
 try {
   emitTaskCreated(task);

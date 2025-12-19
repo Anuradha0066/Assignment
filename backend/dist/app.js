@@ -24,10 +24,10 @@ app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
     origin: [
     'http://localhost:5173',           // Local dev
-    'https://musical-taffy-df91a6.netlify.app'  // 🔥 NETLIFY URL
+    'https://splendorous-marzipan-183281.netlify.app'  // 🔥 NETLIFY URL
   ],
 
-    credentials: true,
+    // credentials: true,
 }));
 app.use(routes_1.apiRouter);
 app.get('/health', (_req, res) => res.json({ status: 'ok' }));

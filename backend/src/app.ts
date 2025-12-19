@@ -14,7 +14,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://elaborate-tarsier-61ea43.netlify.app'
+    'https://splendorous-marzipan-183281.netlify.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],

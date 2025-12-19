@@ -84,7 +84,9 @@ export function CreateTaskModal({ onSuccess }: CreateTaskModalProps) {
 
             <div>
               <label className="text-sm font-medium text-gray-700 mb-1 block">Due Date</label>
-              <Input type="date" {...form.register('dueDate')} />
+              <Input type="date"
+              min={new Date().toISOString().split("T")[0]}
+               {...form.register('dueDate')} />
             </div>
           </div>
 

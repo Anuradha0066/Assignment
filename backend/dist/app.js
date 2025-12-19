@@ -24,7 +24,7 @@ app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
     origin: [
     'http://localhost:5173',           // Local dev
-    'https://splendorous-marzipan-183281.netlify.app'  // 🔥 NETLIFY URL
+    'https://candid-cheesecake-00f96c.netlify.app'  // 🔥 NETLIFY URL
   ],
 
     // credentials: true,

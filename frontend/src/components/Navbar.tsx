@@ -2,7 +2,7 @@ import { Bell, Search, Plus, UserCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export default function Navbar() {
-  const { user, logout } = useAuth(); // 👈 logout bhi le lo
+  const { user, logout } = useAuth(); 
 
   return (
     <nav className="bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-100 sticky top-0 z-50">
@@ -27,9 +27,7 @@ export default function Navbar() {
               <Bell className="w-5 h-5" />
             </button>
 
-            {/* Avatar + dropdown */}
             <div className="relative group">
-              {/* Avatar */}
               <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white font-semibold cursor-pointer">
                 {(user?.name || user?.email || 'U').charAt(0).toUpperCase()}
               </div>

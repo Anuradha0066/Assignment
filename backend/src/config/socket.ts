@@ -18,7 +18,7 @@ export function initSocket(server: HttpServer): SocketIOServer {
     registerNotificationHandlers(socket);
   });
 
-  console.log('⚡ Socket.io initialized');
+  console.log('Socket.io initialized');
 
   return io;
 }

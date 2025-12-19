@@ -8,12 +8,7 @@ const router = Router();
 
 router.use(authMiddleware);
 
-/**
- * Query Params supported:
- * - status
- * - priority
- * - assignedToId
- */
+
 router.post('/', validate(CreateTaskSchema), controller.createTask);
 router.get('/', controller.getTasks);
 router.get('/:id', controller.getTask);

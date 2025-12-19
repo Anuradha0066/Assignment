@@ -1,11 +1,9 @@
-// Simple clsx only (No tw-merge needed)
 import { type ClassValue, clsx } from 'clsx';
 
 export function cn(...inputs: ClassValue[]) {
   return clsx(inputs);
 }
 
-// Keep all other functions same
 export const formatDate = (date: string | Date) => {
   return new Date(date).toLocaleDateString('en-US', {
     weekday: 'short',

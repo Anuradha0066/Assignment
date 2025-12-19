@@ -18,7 +18,7 @@ export const CreateTaskSchema = z.object({
       .string()
       .optional()
       .refine((date) => {
-        if (!date) return true; // dueDate optional hai
+        if (!date) return true; 
         const selected = new Date(date);
         const today = new Date();
         today.setHours(0, 0, 0, 0);
@@ -29,7 +29,7 @@ export const CreateTaskSchema = z.object({
         priority: z.enum(['Low', 'Medium', 'High', 'Urgent']).default('Medium'),
   // creatorId: z.string(),
   assignedToId: z.string().optional(),
-  status: z.enum(['To Do', 'In Progress', 'Review', 'Completed']).default('To Do'), // ✅ yahan add
+  status: z.enum(['To Do', 'In Progress', 'Review', 'Completed']).default('To Do'), 
 })
   .strict();
 

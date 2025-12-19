@@ -21,7 +21,6 @@ export function useSocket() {
     socket.on('task-deleted', () => mutate());
 
     return () => {
-      // Keep socket alive
     };
   }, [user?._id, mutate]);
 

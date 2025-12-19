@@ -1,6 +1,5 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-// ✅ INTERFACE EXPORT KARO (pehle add karo)
 export interface ITask extends Document {
   title: string;
   description: string;

@@ -8,7 +8,6 @@ export function errorMiddleware(
   _next: NextFunction
 ) {
   if (err instanceof ZodError) {
-    // 🔥 SIMPLEST - err.issues[0] always works
     return res.status(400).json({
       error: err.issues[0]?.message || 'Please check your input'
     });

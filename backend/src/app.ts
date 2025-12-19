@@ -10,7 +10,6 @@ dotenv.config();
 
 const app = express();
 
-/* ------------------ CORS MUST COME FIRST ------------------ */
 app.use(cors({
   origin: [
     'http://localhost:5173',
@@ -21,13 +20,11 @@ app.use(cors({
   // credentials: true,
 }));
 
-app.options('*', cors()); // ✅ VERY IMPORTANT
+app.options('*', cors()); 
 
-/* ------------------ MIDDLEWARE ------------------ */
 app.use(express.json());
 app.use(cookieParser());
 
-/* ------------------ ROUTES ------------------ */
 app.get('/', (_req, res) => {
   res.json({
     message: 'TaskFlow Backend API ✅',
@@ -40,7 +37,6 @@ app.use('/api', apiRouter);
 
 app.get('/health', (_req, res) => res.json({ status: 'ok' }));
 
-/* ------------------ ERROR HANDLER ------------------ */
 app.use(errorMiddleware);
 
 export default app;

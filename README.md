@@ -7,7 +7,6 @@ Full-stack task management application with real-time collaboration, optimistic 
 Assignment/
 ├── frontend/ # React + Vite + Socket.io-client
 ├── backend/ # Node.js/Express + Socket.io + MongoDB
-├── docker-compose.yml # Docker orchestration (FE + BE + Mongo)
 └── README.md # This file
 
 
@@ -24,7 +23,7 @@ npm install
 Copy .env.example to .env and update MONGODB_URI, JWT_SECRET
 npm run dev
 
-**Backend runs on:** `http://localhost:5000/api/v1`
+**Backend runs on:** `https://assignment-1-fbp7.onrender.com`
 
 ### 2. Frontend Setup
 cd frontend
@@ -32,7 +31,7 @@ npm install
 Copy .env.example to .env and update VITE_API_URL
 npm run dev
 
-**Frontend runs on:** `http://localhost:5173`
+**Frontend runs on:** `https://candid-cheesecake-00f96c.netlify.app`
 
 ### 3. Test the app
 - Register/login
@@ -40,9 +39,15 @@ npm run dev
 - Real-time collaboration works across browser tabs
 
 
-- Frontend: `http://localhost:5173`
-- Backend: `http://localhost:5000`
-- MongoDB: containerized with `host.docker.internal` fallback
+- Backend:
+    - Local: http://localhost:5000
+    - Production: https://assignment-1-fbp7.onrender.com
+
+- Frontend:
+    - Local: http://localhost:5173
+    - Production: https://candid-cheesecake-00f96c.netlify.app
+
+- MongoDB: MongoDB Atlas (connection string hidden for security)
 
 ## 📋 API Contract
 
@@ -80,7 +85,7 @@ project:updated → Project name changes sync
 
 
 
-**Socket connection auto-establishes on login with JWT auth**
+**Socket connection auto-establishes after login using authenticated user context and users are joined to per-user & per-project rooms**
 
 ## ✨ Bonus Features Implemented
 
@@ -128,15 +133,16 @@ React Query → Tailwind → Vite HMR
 ## 🔒 Environment Variables
 
 ### Backend (.env)
-NODE_ENV=development
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=secret
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/taskflow
-JWT_SECRET=supersecret123
+NODE_ENV=production
+CLIENT_URL=https://candid-cheesecake-00f96c.netlify.app
 
 
 ### Frontend (.env)
-VITE_API_URL=http://localhost:5000/api/v1
-
+VITE_API_URL=https://assignment-1-fbp7.onrender.com/api/v1
+VITE_SOCKET_URL=https://assignment-1-fbp7.onrender.com 
 
 
 ## 🧪 Testing Status
@@ -149,11 +155,15 @@ VITE_API_URL=http://localhost:5000/api/v1
 - Audit log persistence
 - Error handling + loading states
 
-## 📱 Screenshots
+ ## 📱 Screenshots
 
-**Dashboard** - Real-time task list with project grouping
-**Task Form** - Optimistic create with instant UI feedback
-**Audit Logs** - Complete change history
+### Dashboard
+![Dashboard](./screenshot/Dashboard.png)
+
+### Task Form
+![Task Form](./screenshot/TaskForm.png)
+
+
 
 ## 🚀 Production Deployment
 

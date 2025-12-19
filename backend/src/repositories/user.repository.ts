@@ -18,7 +18,7 @@ export async function findUserByEmail(
 ): Promise<IUser | null> {
   return User.findOne({ email })
     .select('+password')
-    .exec(); // document needed for password compare
+    .exec(); 
 }
 
 export async function findUserById(
@@ -26,7 +26,7 @@ export async function findUserById(
 ): Promise<Omit<IUser, 'password'> | null> {
   return User.findById(id)
     .select('-password')
-    .lean() // 👈 IMPORTANT
+    .lean() 
     .exec();
 }
 

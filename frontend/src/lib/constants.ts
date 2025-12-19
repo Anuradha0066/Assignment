@@ -1,4 +1,3 @@
-// Task Statuses
 export const TASK_STATUSES = [
   'To Do',
   'In Progress', 
@@ -16,7 +15,6 @@ export const TASK_PRIORITIES = [
 export type TaskStatus = typeof TASK_STATUSES[number];
 export type TaskPriority = typeof TASK_PRIORITIES[number];
 
-// Dashboard Views
 export const DASHBOARD_VIEWS = [
   { id: 'all', label: 'All Tasks' },
   { id: 'assigned', label: 'Assigned to Me' },
@@ -24,7 +22,6 @@ export const DASHBOARD_VIEWS = [
   { id: 'overdue', label: 'Overdue' }
 ] as const;
 
-// Priority Colors for UI
 export const PRIORITY_COLORS = {
   Low: 'border-blue-200 bg-blue-50 text-blue-800',
   Medium: 'border-yellow-200 bg-yellow-50 text-yellow-800',
@@ -39,7 +36,6 @@ export const STATUS_COLORS = {
   'Completed': 'bg-green-100 text-green-800'
 } as const;
 
-// API Endpoints
 export const API_ENDPOINTS = {
   TASKS: '/api/v1/tasks',
   AUTH: '/api/v1/auth',

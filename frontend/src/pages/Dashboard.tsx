@@ -7,7 +7,6 @@ import Navbar from '../components/Navbar';
 import { CreateTaskModal } from '../components/CreateTaskModal';
 import type { Task } from '../types/task';
 
-// ✅ INLINE cn function - NO IMPORT NEEDED
 const cn = (...classes: any[]) => classes.filter(Boolean).join(' ');
 
 const Dashboard = () => {
@@ -18,13 +17,11 @@ const Dashboard = () => {
   const [statusFilter, setStatusFilter] = useState('All');
   const [priorityFilter, setPriorityFilter] = useState('All');
 
-  // ✅ FIXED: Use displayTasks for stats too
   const displayTasks = loading || error 
     ? [{ _id: '1', title: 'Sample Task', status: 'To Do' as const, priority: 'Medium' as const, creatorId: user?._id || 'demo' }]
     : tasks;
 
     
-  // ✅ FIXED: stats use displayTasks + safe user._id
   const stats = useMemo(() => {
     if (!user?._id || displayTasks.length === 0) {
       return { all: 0, assigned: 0, created: 0, overdue: 0 };
@@ -39,7 +36,6 @@ const Dashboard = () => {
     };
   }, [displayTasks, user?._id]);
 
-  // ✅ FIXED: filteredTasks use displayTasks
   const filteredTasks = useMemo(() => {
     return displayTasks
       .filter((task: Task) => {
@@ -58,7 +54,6 @@ const Dashboard = () => {
       });
   }, [displayTasks, view, statusFilter, priorityFilter, user?._id]);
 
-  // ✅ onSuccess callback for CreateTaskModal
   const handleTaskCreated = useCallback(() => {
     mutate();
   }, [mutate]);
@@ -94,7 +89,7 @@ const Dashboard = () => {
             )}>
               {isConnected ? '🟢 Live' : '🔴 Offline'}
             </div>
-            {/* ✅ CONNECTED CreateTaskModal */}
+           
             <CreateTaskModal onSuccess={handleTaskCreated} />
           </div>
         </div>

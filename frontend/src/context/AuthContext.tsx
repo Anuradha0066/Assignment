@@ -1,4 +1,3 @@
-// context/AuthContext.tsx
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 interface User {
@@ -10,7 +9,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  setUser: (user: User | null) => void;  // ✅ ADDED setUser
+  setUser: (user: User | null) => void;  
   logout: () => void;
 }
 
@@ -26,14 +25,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // ✅ TEMPORARY MOCK checkAuthToken (replace with your API)
   const checkAuthToken = async (): Promise<User | null> => {
     try {
-      // Replace with your real API call
       const token = localStorage.getItem('token');
       if (!token) return null;
       
-      // Mock user for now - REPLACE WITH REAL API
       return {
         _id: '1',
         email: 'user@example.com',
@@ -55,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         console.log('No auth token');
         setUser(null);
       } finally {
-        setLoading(false);  // ✅ FIXES infinite loading
+        setLoading(false);  
       }
     };
     checkAuth();

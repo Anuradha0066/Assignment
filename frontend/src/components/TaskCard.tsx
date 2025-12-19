@@ -1,4 +1,3 @@
-// Replace TaskCard.tsx with this FIXED version:
 
 import { useState } from 'react';
 import { Clock, User, AlertCircle, Trash2, CheckCircle2 } from 'lucide-react';
@@ -7,7 +6,7 @@ import { updateTask, deleteTask } from '../api/task.api';
 
 interface TaskCardProps {
   task: Task;
-  onUpdate?: (data?: any, options?: any) => void; // SWR mutate aa raha hai yahan
+  onUpdate?: (data?: any, options?: any) => void; 
 }
 
 
@@ -37,7 +36,6 @@ export default function TaskCard({ task, onUpdate }: TaskCardProps) {
   const statusColor =
     STATUS_COLORS[task.status] || 'bg-gray-100 text-gray-800';
 
-  // ✅ Optimistic status change
   const handleStatusChange = async (newStatus: Task['status']) => {
     if (newStatus === task.status) return;
     if (!onUpdate) return;
@@ -45,7 +43,6 @@ export default function TaskCard({ task, onUpdate }: TaskCardProps) {
     setIsSaving(true);
     const optimisticTask = { ...task, status: newStatus };
 
-    // 1) Optimistic UI
     onUpdate(
       (current: { tasks: Task[] }) => ({
         tasks: current.tasks.map((t) =>
@@ -57,17 +54,15 @@ export default function TaskCard({ task, onUpdate }: TaskCardProps) {
 
     try {
       await updateTask(task._id, { status: newStatus });
-      // 2) Refetch from server
       onUpdate();
     } catch (e) {
-      // 3) Rollback via refetch
+
       onUpdate();
     } finally {
       setIsSaving(false);
     }
   };
 
-  // ✅ Optimistic delete
   const handleDelete = async () => {
     if (!onUpdate) return;
     const ok = window.confirm('Delete this task?');
@@ -75,7 +70,6 @@ export default function TaskCard({ task, onUpdate }: TaskCardProps) {
 
     setIsSaving(true);
 
-    // 1) Optimistic removal
     onUpdate(
       (current: { tasks: Task[] }) => ({
         tasks: current.tasks.filter((t) => t._id !== task._id),
@@ -85,10 +79,8 @@ export default function TaskCard({ task, onUpdate }: TaskCardProps) {
 
     try {
       await deleteTask(task._id);
-      // 2) Confirm from server
       onUpdate();
     } catch (e) {
-      // 3) Rollback
       onUpdate();
     } finally {
       setIsSaving(false);
@@ -152,9 +144,7 @@ export default function TaskCard({ task, onUpdate }: TaskCardProps) {
         )}
       </div>
 
-      {/* 👇 yahan pe right side ka pura block replace karo */}
       <div className="flex items-center gap-2">
-        {/* Existing priority pill – bilkul same rakha */}
         <div
           className={`px-3 py-1 rounded-full text-xs font-medium 
           ${task.priority === 'Urgent' ? 'bg-red-100 text-red-800' : 'bg-indigo-100 text-indigo-800'}`}
@@ -162,7 +152,6 @@ export default function TaskCard({ task, onUpdate }: TaskCardProps) {
           {task.priority}
         </div>
 
-        {/* ✅ Next status button */}
         <button
           type="button"
           disabled={isSaving}
@@ -183,7 +172,6 @@ export default function TaskCard({ task, onUpdate }: TaskCardProps) {
           {isSaving ? 'Saving...' : 'Next'}
         </button>
 
-        {/* ✅ Delete button */}
         <button
           type="button"
           disabled={isSaving}

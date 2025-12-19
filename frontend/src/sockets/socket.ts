@@ -23,7 +23,7 @@ export const initSocket = (userId?: string): Socket => {
     console.log('✅ Socket connected:', (socket as any)?.id);
   });
 
-  socket.on('disconnect', (reason: string) => {  // ✅ Explicit string type
+  socket.on('disconnect', (reason: string) => {  
     console.log('❌ Socket disconnected:', reason);
   });
 

@@ -1,4 +1,3 @@
-// frontend/src/api/task.api.ts - COMPLETE FILE
 import useSWR from 'swr';
 import axiosInstance from './axios';
 import type { Task, CreateTaskDto } from '../types/task';
@@ -15,7 +14,6 @@ export const useTasks = () => {
   };
 };
 
-// ✅ ADD THESE MISSING FUNCTIONS
 export const createTask = async (data: CreateTaskDto): Promise<Task> => {
   const res = await axiosInstance.post<{ task: Task }>('/tasks', data);
   return res.data.task;

@@ -16,7 +16,6 @@ const Register = () => {
       await register({ name, email, password });
       navigate('/login');
     } catch (err: any) {
-      // 🔥 FIXED: Handle Zod error object
       if (err.formErrors || err.fieldErrors) {
         setError('Please fix the form errors above');
       } else {

@@ -14,9 +14,8 @@ const Login = () => {
   e.preventDefault();
   setError('');
   try {
-    const { user, token } = await login({ email, password });  // 🔥 token receive!
+    const { user, token } = await login({ email, password });  
     
-    // Backend cookie already set + frontend state
     setUser(user);
     navigate('/dashboard');
   } catch (err: any) {

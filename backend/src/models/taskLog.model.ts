@@ -4,7 +4,7 @@ const TaskLogSchema = new Schema(
   {
     taskId: { type: Schema.Types.ObjectId, ref: 'Task', required: true },
     userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    field: { type: String, required: true },      // e.g. "status"
+    field: { type: String, required: true },     
     oldValue: { type: String },
     newValue: { type: String },
   },

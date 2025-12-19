@@ -14,9 +14,8 @@ export function useAuth() {
 if (response.token) {
     localStorage.setItem('token', response.token);
   }  
-  // Backend _id ko frontend me map karo
   const userData = {
-    _id: response.user._id,  // ← Backend field
+    _id: response.user._id, 
     email: response.user.email,
     name: response.user.name
   };

@@ -33,7 +33,7 @@ export async function updateTask(req: Request, res: Response) {
   const currentUser = req.userId;
   const task = await taskService.getTask(id);
   if (!task) return res.status(404).json({ error: 'Not found' });
-  // Authorization: only creator or assigned user can update
+  
   if (task.creatorId.toString() !== currentUser && task.assignedToId?.toString() !== currentUser) {
     return res.status(403).json({ error: 'Forbidden' });
   }

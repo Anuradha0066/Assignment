@@ -8,7 +8,6 @@ export function useCreateTask() {
 
   const create = useCallback(async (taskData: CreateTaskDto) => {
     try {
-      // ✅ OPTIMISTIC UI - Show task instantly
       const optimisticTask: Task = {
         _id: `temp-${Date.now()}`,
         ...taskData,
@@ -20,7 +19,6 @@ export function useCreateTask() {
         updatedAt: new Date().toISOString(),
       };
 
-      // ✅ FIXED: Type currentData parameter
       mutate(
         (currentData: { tasks: Task[] } | undefined) => ({
           tasks: [optimisticTask, ...(currentData?.tasks || [])],
@@ -28,10 +26,8 @@ export function useCreateTask() {
         { revalidate: false }
       );
 
-      // Actual API call
       const newTask = await createTask(taskData);
 
-      // ✅ FIXED: Type currentData parameter
       mutate(
         (currentData: { tasks: Task[] } | undefined) => ({
           tasks: currentData?.tasks?.map((task) =>
@@ -43,7 +39,6 @@ export function useCreateTask() {
 
       return newTask;
     } catch (error) {
-      // Rollback on error
       mutate();
       throw error;
     }

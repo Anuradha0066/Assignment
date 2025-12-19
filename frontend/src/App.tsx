@@ -6,7 +6,7 @@ import Dashboard from './pages/Dashboard';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
-  console.log('🔍 DEBUG:', { user, loading });  // ← ADD THIS
+  console.log('🔍 DEBUG:', { user, loading });  
   
   if (loading) return <div>🔄 Loading... ({loading.toString()})</div>;
   return user ? children : <Navigate to="/login" />;

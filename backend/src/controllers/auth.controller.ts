@@ -2,10 +2,7 @@ import { Request, Response } from 'express';
 import { registerUser, loginUser } from '../services/auth.service';
 import { findUserById } from '../repositories/user.repository';
 
-/**
- * Register a new user
- * POST /api/auth/register
- */
+
 export async function register(req: Request, res: Response) {
   const { name, email, password } = req.body;
 
@@ -16,10 +13,7 @@ export async function register(req: Request, res: Response) {
   });
 }
 
-/**
- * Login user
- * POST /api/auth/login
- */
+
 export async function login(req: Request, res: Response) {
   const { email, password } = req.body;
 
@@ -29,19 +23,16 @@ export async function login(req: Request, res: Response) {
   httpOnly: true,
   secure: false,
   sameSite: 'lax',
-  path: '/',          // 🔥 MUST
+  path: '/',         
 });
 
 
  
-// ✅ CORRECT:
+
 res.status(200).json({ user, token });
 
 }
-/**
- * Logout user
- * POST /api/auth/logout
- */
+
 export async function logout(_req: Request, res: Response) {
   res.clearCookie('token', {
     httpOnly: true,
@@ -51,10 +42,7 @@ export async function logout(_req: Request, res: Response) {
   res.status(204).send();
 }
 
-/**
- * Get current logged-in user
- * GET /api/auth/me
- */
+
 export async function me(req: Request, res: Response) {
   const userId = req.userId;
 

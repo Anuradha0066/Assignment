@@ -2,10 +2,7 @@ import { Request, Response } from 'express';
 import { findUserById, updateUserById } from '../repositories/user.repository';
 import { UpdateUserDto } from '../dtos/user.dto';
 
-/**
- * Get current user's profile
- * GET /api/users/me
- */
+
 export async function getProfile(req: Request, res: Response) {
   const userId = req.userId;
 
@@ -24,10 +21,7 @@ export async function getProfile(req: Request, res: Response) {
   });
 }
 
-/**
- * Update current user's profile
- * PUT /api/users/me
- */
+
 export async function updateProfile(req: Request, res: Response) {
   const userId = req.userId;
 

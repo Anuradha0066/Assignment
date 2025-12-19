@@ -1,4 +1,3 @@
-// frontend/src/types/task.ts - COMPLETE FIXED FILE
 
 export interface Task {
   _id: string;
@@ -13,7 +12,6 @@ export interface Task {
   updatedAt: string;
 }
 
-// ✅ ADD THIS - Move from validators.ts
 export interface CreateTaskDto {
   title: string;
   description?: string;
